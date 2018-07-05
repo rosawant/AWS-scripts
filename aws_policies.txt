@@ -19,31 +19,7 @@ restrict user to a region:
 }
 
 
-Read and write dynamodb{
-{ 
-     "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "dynamodb:List*"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "dynamodb:BatchGet*",
-                "dynamodb:DescribeStream",
-                "dynamodb:DescribeTable",
-                "dynamodb:Get*",
-                "dynamodb:Query",
-                "dynamodb:Scan"
-            ],
-            "Resource": "*"
-        }
-    ]
-} policies:
+Read and write dynamodb:
 
 {
     "Version": "2012-10-17",
