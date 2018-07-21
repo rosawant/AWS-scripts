@@ -1,0 +1,62 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "elasticbeanstalk:Check*",
+                "autoscaling:Describe*",
+                "ec2:AuthorizeSecurityGroupIngress",
+                "cloudwatch:Describe*",
+                "elasticbeanstalk:RequestEnvironmentInfo",
+                "sns:Get*",
+                "rds:Describe*",
+                "autoscaling:UpdateAutoScalingGroup",
+                "cloudformation:Estimate*",
+                "cloudformation:UpdateStack",
+                "elasticloadbalancing:Describe*",
+                "cloudwatch:Get*",
+                "cloudformation:List*",
+                "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+                "autoscaling:ResumeProcesses",
+                "cloudwatch:List*",
+                "autoscaling:SuspendProcesses",
+                "elasticbeanstalk:Describe*",
+                "sqs:Get*",
+                "sqs:List*",
+                "sns:List*",
+                "cloudformation:Describe*",
+                "ec2:RevokeSecurityGroupIngress",
+                "ec2:Describe*",
+                "cloudformation:Validate*",
+                "elasticbeanstalk:List*",
+                "elasticbeanstalk:RetrieveEnvironmentInfo",
+                "cloudformation:Get*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "elasticbeanstalk:UpdateApplication",
+                "elasticbeanstalk:RebuildEnvironment",
+                "elasticbeanstalk:UpdateApplicationVersion",
+                "elasticbeanstalk:RestartAppServer",
+                "elasticbeanstalk:ApplyEnvironmentManagedAction",
+                "elasticbeanstalk:UpdateEnvironment",
+                "elasticbeanstalk:ValidateConfigurationSettings",
+                "elasticbeanstalk:CreateApplicationVersion",
+                "elasticbeanstalk:CreateConfigurationTemplate",
+                "elasticbeanstalk:UpdateConfigurationTemplate"
+            ],
+            "Resource": [
+                "arn:aws:elasticbeanstalk:ap-southeast-1::environment/<application>/*",
+                "arn:aws:elasticbeanstalk:ap-southeast-1::application/<application>",
+                "arn:aws:elasticbeanstalk:ap-southeast-1::applicationversion/*/*",
+                "arn:aws:elasticbeanstalk:ap-southeast-1::configurationtemplate/*/*"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,74 @@
+AWS interview question:
+1.How to extend xfs volume aws
+Increse size through console
+On server:
+Check disk type;
+root@ip /]# file -s /dev/xvda
+/dev/xvda: x86 boot sector; partition 1: ID=0xee, starthead 0, startsector 1, 16777215 sectors, extended partition table (last)\011, code offset 0x63
+
+Partition is of type xfs s command to extend disk will be:
+growpart /dev/xvda 1
+xfs_growfs -d /dev/xvda1
+
+To increse type ext4:
+file -s /dev/xvdb
+/dev/xvdb: Linux rev 1.0 ext4 filesystem data, UUID=3749cb34-e793-4a80-94fd-66761e5278ba (needs journal recovery) (extents) (64bit) (large files) (huge files)
+[root@ip-aws ~]# resize2fs /dev/xvdb
+resize2fs 1.42.9 (28-Dec-2013)
+
+2.S3 types
+STANDARD—The default storage class. If you don't specify the storage class when you upload an object, Amazon S3 assigns the STANDARD storage class.
+REDUCED_REDUNDANCY—The Reduced Redundancy Storage (RRS) storage class is designed for noncritical, reproducible data that can be stored with less redundancy than the STANDARD storage class.
+GLACIER Storage Class-The GLACIER storage class is suitable for archiving data where data access is infrequent. Archived objects are not available for real-time access. You must first restore the objects before you can access them.
+
+3.Difference between role and group
+Group: An IAM group is a collection of IAM users. You can use groups to specify permissions for a collection of users, which can make those permissions easier to manage for those users.
+
+Role-An IAM role is very similar to a user, in that it is an identity with permission policies that determine what the identity can and cannot do in AWS. However, a role does not have any credentials (password or access keys) associated with it. Instead of being uniquely associated with one person, a role is intended to be assumable by anyone who needs it. An IAM user can assume a role to temporarily take on different permissions for a specific task. A role can be assigned to a federated user who signs in by using an external identity provider instead of IAM. AWS uses details passed by the identity provider to determine which role is mapped to the federated user.
+
+4.Diff between /var/tmp and /tmp
+/var/tmp- Temporary files to be preserved between reboots.
+/tmp -Temporary files (see also /var/tmp). Often not preserved between system reboots, and may be severely size restricted.
+
+5.How to remove node from puppet
+puppet node purge <CERTNAME>
+
+6.Puppet resource list
+
+7.Use of /proc direcory
+Virtual filesystem providing process and kernel information as files. In Linux, corresponds to a procfs mount. Generally automatically generated and populated by the system, on the fly.
+
+8.How to change kernel parameter
+/etc/sysctl.conf
+[root@testserver13 ~]# sysctl -p
+net.ipv4.ip_forward = 0
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.default.accept_source_route = 0
+kernel.sysrq = 0
+kernel.core_uses_pid = 1
+net.ipv4.tcp_syncookies = 1
+kernel.msgmnb = 65536
+kernel.msgmax = 65536
+kernel.shmmax = 68719476736
+kernel.shmall = 4294967296
+[root@testserver13 ~]# 
+Change kernel parameter
+sysctl -w net.ipv4.conf.eth0.rp_filter=1
+
+9.Disable password login only allow key base login
+sudo vi /etc/ssh/sshd_config
+PasswordAuthentication no
+10.difference between elb and alb
+11. Difference between vertical VS horizontal scaling
+Horizontal scaling means that you scale by adding more machines into your pool of resources whereas Vertical scaling means that you scale by adding more power (CPU, RAM) to an existing machine.
+
+12.Difference between cloudwatch and cloudtrail
+Cloudtrial is primarily used when you want to monitor the API calls made to a particular service or Application (e.g. The number of get requests on S3 bucket made from an application written using AWS SDKs). It is primarily used to monitor API calls and is applicable for a select services only
+CloudWatch is used for logging events that happen on any particular AWS service. It is the default logging service provided by AWS and can be configured to detect Alarm conditions such as High CPU, Low Disk Space, Network Parameters etc.
+
+
+
+
+
+
+
